@@ -1,0 +1,94 @@
+
+# coding: utf-8
+
+# In[3]:
+
+
+# In this exercise we will be predicting an animal body weight 
+# based on it brain's weight. 
+
+# Since the data is labeled, this is a supervised approach
+# The type of machine learning task that we will use is called
+# Regresion
+
+# Import required libraries
+
+# Pandas lets us read our dataset
+import pandas as pd 
+
+# Machine learning library used for this exercise
+from sklearn import linear_model
+
+# Let us visualize our model and data
+import matplotlib.pyplot as plt
+
+
+# In[4]:
+
+
+# Read data from github repository
+datafram = pd.read_fwf('https://raw.githubusercontent.com/juanchy31/udacity_siraj_linear_regression/master/brain_body.txt')
+
+
+# In[5]:
+
+
+datafram.head()
+
+
+# In[6]:
+
+
+# Parse and read both measurements in two different variables
+x_values = datafram[['Brain']]
+
+
+# In[7]:
+
+
+y_values = datafram[['Body']]
+
+
+# In[9]:
+
+
+# Now we have data that we can plot on a graph using x and y
+# coordinates
+
+# Now we train model on the data.
+# First, create the LinearRegression variable 
+
+body_reg = linear_model.LinearRegression()
+
+# Now we are going to find the line of best fit for our model
+# based on our x,y value pairs
+
+body_reg.fit(x_values,y_values)
+
+# Visualize the results on a matplotlib scatter graph
+# For every x y value we have, predict the associated y value
+# and draw a line that intersect all those points
+
+plt.scatter(x_values,y_values)
+plt.plot(x_values, body_reg.predict(x_values))
+plt.show()
+
+
+
+# In[11]:
+
+
+# Our regression line fits most of the data very well, and there 
+# seems to be a very strong correlation between brain and body 
+# weights.
+
+# Linear Regression finds the line of best fit using the equation:
+# Y = mx + b, where b is the y, m measures how steep. 
+# This equation is called equation of a line, or Linear Equation.
+
+
+# In[ ]:
+
+
+
+
